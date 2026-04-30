@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio – Claudia Ximena Salazar Herrera</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --mint:#F5F0E8;--mint-dark:#EDE5D5;--green-dark:#4A5A2A;
+  --green-mid:#6B7A3A;--wine:#8B1A1A;--wine-light:#A52525;
+  --black:#1C1C1C;--gray:#5A5A5A;--border:rgba(74,90,42,0.2);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--mint);color:var(--black);overflow-x:hidden;}
+
+/* ── TIPOGRAFÍA GLOBAL ── */
+/* Cormorant Garamond → títulos, nombres, headings */
+/* Jost               → cuerpo, etiquetas, UI      */
+
+.bg-waves{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-waves svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:200%;min-height:200%;opacity:0.1;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(245,240,232,0.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:center;align-items:center;
+  gap:36px;padding:14px 40px;
+}
+nav a{
+  font-family:'Jost',sans-serif;font-size:12px;font-weight:500;
+  color:var(--green-dark);text-decoration:none;letter-spacing:0.1em;
+  text-transform:uppercase;padding-bottom:2px;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s;
+}
+nav a:hover{color:var(--wine);border-bottom-color:var(--wine);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--wine);font-size:16px;letter-spacing:0.05em;}
+.nav-links{display:flex;gap:36px;}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:110;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);transition:transform .3s,opacity .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(245,240,232,0.98);z-index:99;
+  flex-direction:column;align-items:center;justify-content:center;gap:28px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;
+  color:var(--wine);text-decoration:none;letter-spacing:0.02em;
+}
+
+/* SECTIONS */
+section{
+  position:relative;z-index:1;min-height:100vh;
+  padding:100px 60px 70px;
+  display:flex;align-items:center;justify-content:center;
+}
+section:nth-child(even){background:rgba(237,229,213,0.4);}
+.section-inner{width:100%;max-width:900px;}
+
+.section-title{
+  font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;
+  color:var(--wine);margin-bottom:8px;line-height:1;letter-spacing:0.01em;
+}
+.section-divider{width:56px;height:2px;background:var(--wine);opacity:0.5;margin-bottom:32px;}
+
+/* HERO */
+#inicio{text-align:center;flex-direction:column;}
+.hero-eyebrow{
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--green-mid);margin-bottom:16px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;
+  font-style:italic;color:var(--green-dark);margin-bottom:6px;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,88px);
+  font-weight:700;color:var(--wine);line-height:0.92;
+  margin-bottom:12px;letter-spacing:0.02em;
+}
+.hero-year{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,32px);
+  font-weight:400;font-style:italic;color:var(--green-dark);margin-bottom:28px;
+}
+.hero-contact{
+  font-family:'Jost',sans-serif;font-size:13px;color:var(--gray);
+  font-weight:300;line-height:2.1;
+}
+
+/* SOBRE MÍ */
+.sobre-grid{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:center;}
+.sobre-greeting{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,58px);
+  font-weight:700;color:var(--wine);margin-bottom:20px;
+}
+.sobre-body{
+  font-family:'Jost',sans-serif;font-size:14px;line-height:1.85;
+  color:var(--black);font-weight:300;
+}
+.sobre-body strong{font-weight:600;color:var(--wine-light);}
+.sobre-photo{
+  width:100%;aspect-ratio:3/4;background:var(--mint-dark);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+}
+.photo-placeholder{text-align:center;color:var(--green-dark);opacity:0.5;}
+.photo-placeholder span{font-size:32px;display:block;margin-bottom:6px;}
+.photo-placeholder p{font-family:'Jost',sans-serif;font-size:11px;font-style:italic;}
+
+/* EXPERIENCIA */
+.exp-columns{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.col-title{
+  font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;
+  color:var(--wine);margin-bottom:18px;letter-spacing:0.01em;
+}
+.exp-list,.edu-list{list-style:none;}
+.exp-list li,.edu-list li{
+  padding:0 0 14px 18px;border-left:2px solid var(--green-mid);
+  margin-bottom:6px;font-family:'Jost',sans-serif;font-size:13px;
+  line-height:1.65;color:var(--black);font-weight:300;position:relative;
+}
+.exp-list li::before,.edu-list li::before{
+  content:'';width:7px;height:7px;background:var(--wine);border-radius:50%;
+  position:absolute;left:-5px;top:6px;
+}
+.exp-list li strong,.edu-list li strong{
+  display:block;font-weight:600;color:var(--wine-light);
+  font-family:'Jost',sans-serif;margin-bottom:2px;
+}
+
+/* PROGRAMAS */
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.tool-badge{
+  background:rgba(255,255,255,0.55);border:1px solid var(--border);
+  padding:14px 10px;text-align:center;transition:background .2s,transform .2s;
+}
+.tool-badge:hover{background:rgba(255,255,255,0.85);transform:translateY(-2px);}
+.tool-icon{
+  width:32px;height:32px;margin:0 auto 8px;display:flex;
+  align-items:center;justify-content:center;
+}
+.tool-icon img{width:28px;height:28px;object-fit:contain;}
+.tool-name{
+  font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;
+  color:var(--wine);display:block;margin-bottom:2px;
+}
+.tool-cat{
+  font-family:'Jost',sans-serif;font-size:9.5px;color:var(--gray);
+  font-weight:300;font-style:italic;
+}
+
+/* PROYECTOS */
+.projects-intro{
+  font-family:'Jost',sans-serif;font-size:13px;color:var(--gray);
+  font-style:italic;margin-bottom:24px;font-weight:300;
+}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:12px;}
+.project-card{
+  background:rgba(255,255,255,0.45);border:1px solid var(--border);
+  overflow:hidden;transition:transform .25s,box-shadow .25s;
+}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(74,90,42,0.12);}
+.project-thumb{
+  width:100%;aspect-ratio:16/10;background:var(--mint-dark);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:6px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;
+}
+.project-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.project-thumb-placeholder{text-align:center;z-index:1;}
+.project-thumb-placeholder .thumb-icon{font-size:26px;}
+.project-thumb-placeholder .thumb-label{
+  font-family:'Jost',sans-serif;font-size:10px;color:var(--green-dark);
+  opacity:0.6;font-style:italic;margin-top:4px;
+}
+.project-tag{
+  position:absolute;top:8px;left:8px;background:var(--wine);color:#f5ede8;
+  font-family:'Jost',sans-serif;font-size:9px;font-weight:600;
+  padding:3px 8px;letter-spacing:0.1em;text-transform:uppercase;z-index:2;
+}
+.project-info{padding:12px 14px 14px;}
+.project-title{
+  font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;
+  color:var(--wine);margin-bottom:4px;line-height:1.3;
+}
+.project-client{
+  font-family:'Jost',sans-serif;font-size:11px;color:var(--green-dark);
+  font-weight:500;margin-bottom:5px;
+}
+.project-desc{
+  font-family:'Jost',sans-serif;font-size:11px;color:var(--gray);
+  font-weight:300;line-height:1.6;
+}
+.upload-hint{
+  text-align:center;padding:12px;background:rgba(74,90,42,0.06);
+  border:1px dashed var(--border);font-family:'Jost',sans-serif;
+  font-size:11px;color:var(--green-dark);font-style:italic;margin-top:4px;
+}
+
+/* SERVICIOS */
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.service-card{
+  background:rgba(255,255,255,0.5);border:1px solid var(--border);
+  padding:20px 18px 16px;transition:background .2s,transform .2s;
+}
+.service-card:hover{background:rgba(255,255,255,0.8);transform:translateY(-2px);}
+.service-card.full{grid-column:1/-1;}
+.svc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.svc-icon{font-size:18px;}
+.svc-name{
+  font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;
+  color:var(--wine);
+}
+.svc-desc{
+  font-family:'Jost',sans-serif;font-size:12px;color:var(--gray);
+  font-weight:300;line-height:1.6;margin-bottom:12px;
+}
+.svc-price{
+  display:inline-block;background:var(--green-dark);color:var(--mint);
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:500;
+  padding:5px 14px;letter-spacing:0.06em;
+}
+.contract-banner{
+  background:var(--wine);color:#f5ede8;padding:18px 24px;
+  display:flex;align-items:center;gap:16px;margin-top:10px;
+}
+.contract-banner .icon{font-size:24px;flex-shrink:0;}
+.contract-title{
+  font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;
+  color:#f5d9b8;margin-bottom:4px;
+}
+.contract-desc{
+  font-family:'Jost',sans-serif;font-size:12px;color:rgba(245,237,232,0.85);
+  font-weight:300;line-height:1.6;
+}
+
+/* CONTACTO */
+.contact-tagline{
+  font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;
+  color:var(--green-dark);margin-bottom:28px;font-weight:400;
+}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  max-width:580px;margin:0 auto 32px;
+}
+.contact-item{
+  background:rgba(255,255,255,0.5);border:1px solid var(--border);padding:18px 14px;
+}
+.contact-item .icon{font-size:22px;margin-bottom:7px;}
+.contact-label{
+  font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;
+  color:var(--wine);margin-bottom:4px;
+}
+.contact-value{
+  font-family:'Jost',sans-serif;font-size:11px;color:var(--gray);
+  font-weight:300;word-break:break-all;
+}
+.cta-btn{
+  display:inline-block;background:var(--wine);color:#f5ede8;
+  font-family:'Jost',sans-serif;font-size:12px;font-weight:600;
+  padding:14px 40px;text-decoration:none;letter-spacing:0.15em;
+  text-transform:uppercase;transition:background .2s,transform .2s;
+}
+.cta-btn:hover{background:var(--green-dark);transform:translateY(-1px);}
+
+/* FOOTER */
+footer{
+  position:relative;z-index:1;text-align:center;padding:18px;
+  border-top:1px solid var(--border);
+  font-family:'Jost',sans-serif;font-size:11px;color:var(--gray);
+  font-weight:300;font-style:italic;
+}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* EDITABLE */
+[contenteditable="true"]{outline:none;border-radius:2px;transition:background .2s;}
+[contenteditable="true"]:hover{background:rgba(139,26,26,0.06);cursor:text;}
+[contenteditable="true"]:focus{background:rgba(139,26,26,0.09);box-shadow:0 0 0 2px rgba(139,26,26,0.18);}
+.edit-hint{
+  position:fixed;bottom:16px;right:16px;background:var(--wine);color:#f5ede8;
+  font-family:'Jost',sans-serif;font-size:11px;padding:7px 13px;
+  z-index:200;opacity:0.85;pointer-events:none;letter-spacing:0.04em;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{justify-content:space-between;padding:14px 20px;gap:0;}
+  nav .nav-links{display:none;}
+  .hamburger{display:flex;}
+  section{padding:80px 20px 50px;}
+  .section-title{font-size:30px;}
+  .section-divider{margin-bottom:22px;}
+  .sobre-grid{grid-template-columns:1fr;gap:28px;}
+  .sobre-photo{max-width:220px;margin:0 auto;}
+  .exp-columns{grid-template-columns:1fr;gap:28px;}
+  .tools-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .projects-grid{grid-template-columns:1fr;gap:12px;}
+  .services-grid{grid-template-columns:1fr;}
+  .service-card.full{grid-column:1;}
+  .contract-banner{flex-direction:column;text-align:center;gap:10px;}
+  .contact-grid{grid-template-columns:1fr;max-width:300px;}
+  #contacto{text-align:center;}
+  .edit-hint{display:none;}
+}
+@media(min-width:769px) and (max-width:1024px){
+  .tools-grid{grid-template-columns:repeat(3,1fr);}
+  .projects-grid{grid-template-columns:repeat(2,1fr);}
+  section{padding:100px 40px 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-waves">
+  <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#6B7A3A" stroke-width="1">
+      <circle cx="500" cy="400" r="40"/><circle cx="500" cy="400" r="80"/>
+      <circle cx="500" cy="400" r="130"/><circle cx="500" cy="400" r="190"/>
+      <circle cx="500" cy="400" r="260"/><circle cx="500" cy="400" r="340"/>
+      <circle cx="500" cy="400" r="430"/><circle cx="500" cy="400" r="530"/>
+      <circle cx="500" cy="400" r="640"/><circle cx="500" cy="400" r="760"/>
+    </g>
+  </svg>
+</div>
+
+<div class="edit-hint">✏️ Haz clic en cualquier texto para editarlo</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#inicio"        onclick="closeMenu()">Inicio</a>
+  <a href="#sobre-mi"      onclick="closeMenu()">Sobre mí</a>
+  <a href="#experiencia"   onclick="closeMenu()">Experiencia</a>
+  <a href="#programas"     onclick="closeMenu()">Programas</a>
+  <a href="#mis-proyectos" onclick="closeMenu()">Proyectos</a>
+  <a href="#proyectos"     onclick="closeMenu()">Servicios</a>
+  <a href="#contacto"      onclick="closeMenu()">Contacto</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Claudia S.</span>
+  <div class="nav-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#programas">Programas</a>
+    <a href="#mis-proyectos">Proyectos</a>
+    <a href="#proyectos">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PORTADA -->
+<section id="inicio">
+  <div class="section-inner" style="text-align:center;">
+    <div class="fade-in">
+      <p class="hero-eyebrow" contenteditable="true">Portafolio Profesional · Lima, Perú</p>
+      <p class="hero-title" contenteditable="true">Comunicación Audiovisual</p>
+      <h1 class="hero-name" contenteditable="true">PORTAFOLIO</h1>
+      <p class="hero-year" contenteditable="true">2026</p>
+      <div class="hero-contact">
+        <p contenteditable="true">Claudia Ximena Salazar Herrera</p>
+        <p contenteditable="true">Community Manager &amp; Creadora de Contenido Audiovisual</p>
+        <p contenteditable="true">+51 960 933 725 · claudiaximenasalazarherrera@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="section-inner fade-in">
+    <div class="sobre-grid">
+      <div>
+        <h2 class="sobre-greeting" contenteditable="true">¡Hola!</h2>
+        <div class="section-divider"></div>
+        <p class="sobre-body" contenteditable="true">Mi nombre es <strong>Claudia Ximena Salazar Herrera</strong>, soy <strong>Comunicadora Audiovisual</strong> con más de 4 años de experiencia creando contenido de alto impacto para redes sociales. Me especializo en producción y edición de video (Reels, TikToks, videos promocionales y corporativos), gestión de comunidades digitales y estrategia de contenidos para marcas y artistas. Combino creatividad visual con análisis de métricas para desarrollar campañas que conectan con la audiencia y generan resultados medibles.</p>
+      </div>
+      <div class="sobre-photo">
+        <div class="photo-placeholder">
+          <span>📷</span>
+          <p>Agrega tu foto aquí</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="section-inner fade-in">
+    <div class="exp-columns">
+      <div>
+        <h2 class="col-title" contenteditable="true">Experiencia Laboral</h2>
+        <ul class="exp-list">
+          <li contenteditable="true"><strong>Especialista en Campañas Digitales</strong>Centro de Capacitación en Medicina Natural y Holística (2025 – 2026)</li>
+          <li contenteditable="true"><strong>Consultoría en Gestión de Redes Sociales</strong>Artista Musical Independiente (Mar 2025 – Set 2025)</li>
+          <li contenteditable="true"><strong>Diseñadora Gráfica y Creadora de Contenido</strong>Logos y Diseños E.I.R.L. (Ago 2021 – Ene 2025)</li>
+          <li contenteditable="true"><strong>Community Manager (Remoto)</strong>CECATECO (May 2020 – Set 2020)</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="col-title" contenteditable="true">Educación</h2>
+        <ul class="edu-list">
+          <li contenteditable="true"><strong>ISIL</strong>Comunicación Audiovisual (2022 – 2024)</li>
+          <li contenteditable="true"><strong>Británico</strong>Constancia de fase culminada: nivel básico, intermedio y avanzado</li>
+          <li contenteditable="true"><strong>CIBERTEC</strong>Certificaciones en IT, CorelDRAW y Excel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section id="programas">
+  <div class="section-inner fade-in">
+    <h2 class="section-title" contenteditable="true">Programas &amp; Herramientas</h2>
+    <div class="section-divider"></div>
+    <div class="tools-grid">
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/adobepremierepro/9999FF" alt="Adobe Premiere"></div>
+        <span class="tool-name">Adobe Premiere</span><span class="tool-cat">Edición video</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/adobeaftereffects/9999FF" alt="After Effects"></div>
+        <span class="tool-name">After Effects</span><span class="tool-cat">Motion graphics</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/capcut/000000" alt="CapCut"></div>
+        <span class="tool-name">CapCut</span><span class="tool-cat">Edición móvil</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/adobephotoshop/31A8FF" alt="Photoshop"></div>
+        <span class="tool-name">Photoshop</span><span class="tool-cat">Diseño gráfico</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva"></div>
+        <span class="tool-name">Canva</span><span class="tool-cat">Contenido visual</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/coreldraw/009B77" alt="CorelDRAW"></div>
+        <span class="tool-name">CorelDRAW</span><span class="tool-cat">Diseño vectorial</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/meta/0081FB" alt="Meta"></div>
+        <span class="tool-name">Meta Business</span><span class="tool-cat">Campañas digitales</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube"></div>
+        <span class="tool-name">YouTube Studio</span><span class="tool-cat">Análisis de canal</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"></div>
+        <span class="tool-name">Spotify Artists</span><span class="tool-cat">Métricas musicales</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook"></div>
+        <span class="tool-name">Facebook Ads</span><span class="tool-cat">Publicidad digital</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="TikTok"></div>
+        <span class="tool-name">TikTok Business</span><span class="tool-cat">Contenido viral</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-icon"><img src="https://cdn.simpleicons.org/microsoftexcel/217346" alt="Excel"></div>
+        <span class="tool-name">Excel</span><span class="tool-cat">Reportes y métricas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="mis-proyectos">
+  <div class="section-inner fade-in">
+    <h2 class="section-title" contenteditable="true">Proyectos Destacados</h2>
+    <div class="section-divider"></div>
+    <p class="projects-intro" contenteditable="true">Una selección de mis mejores trabajos en contenido audiovisual, diseño y gestión digital.</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb"><span class="project-tag">Video</span><div class="project-thumb-placeholder"><div class="thumb-icon">🎬</div><div class="thumb-label">Agrega imagen</div></div></div>
+        <div class="project-info">
+          <div class="project-title" contenteditable="true">Reels para Artista Musical</div>
+          <div class="project-client" contenteditable="true">📍 Artista Musical Independiente · 2025</div>
+          <div class="project-desc" contenteditable="true">Edición y producción de reels para Instagram y TikTok. Optimización de perfil y crecimiento de comunidad.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb"><span class="project-tag">Campaña</span><div class="project-thumb-placeholder"><div class="thumb-icon">📊</div><div class="thumb-label">Agrega imagen</div></div></div>
+        <div class="project-info">
+          <div class="project-title" contenteditable="true">Campaña Digital de Cursos</div>
+          <div class="project-client" contenteditable="true">📍 Centro de Medicina Natural · 2025</div>
+          <div class="project-desc" contenteditable="true">Creación de contenido audiovisual y piezas gráficas para campañas de Meta Ads con enfoque en conversión.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb"><span class="project-tag">Diseño</span><div class="project-thumb-placeholder"><div class="thumb-icon">🎨</div><div class="thumb-label">Agrega imagen</div></div></div>
+        <div class="project-info">
+          <div class="project-title" contenteditable="true">Identidad Visual para Redes</div>
+          <div class="project-client" contenteditable="true">📍 Logos y Diseños E.I.R.L. · 2021–2025</div>
+          <div class="project-desc" contenteditable="true">Desarrollo de contenido visual y estrategia de branding para marcas en redes sociales.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb"><span class="project-tag">Video</span><div class="project-thumb-placeholder"><div class="thumb-icon">🎥</div><div class="thumb-label">Agrega imagen</div></div></div>
+        <div class="project-info">
+          <div class="project-title" contenteditable="true">Videos Educativos</div>
+          <div class="project-client" contenteditable="true">📍 CECATECO · 2020</div>
+          <div class="project-desc" contenteditable="true">Edición de videos promocionales y contenido educativo para plataformas digitales institucionales.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb"><span class="project-tag">Agrega</span><div class="project-thumb-placeholder"><div class="thumb-icon">➕</div><div class="thumb-label">Tu próximo proyecto</div></div></div>
+        <div class="project-info">
+          <div class="project-title" contenteditable="true">Nombre del Proyecto</div>
+          <div class="project-client" contenteditable="true">📍 Cliente · Año</div>
+          <div class="project-desc" contenteditable="true">Describe aquí el trabajo realizado, el objetivo y los resultados obtenidos.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb"><span class="project-tag">Agrega</span><div class="project-thumb-placeholder"><div class="thumb-icon">➕</div><div class="thumb-label">Tu próximo proyecto</div></div></div>
+        <div class="project-info">
+          <div class="project-title" contenteditable="true">Nombre del Proyecto</div>
+          <div class="project-client" contenteditable="true">📍 Cliente · Año</div>
+          <div class="project-desc" contenteditable="true">Describe aquí el trabajo realizado, el objetivo y los resultados obtenidos.</div>
+        </div>
+      </div>
+    </div>
+    <div class="upload-hint">💡 Para agregar imágenes, abre el archivo .html y reemplaza el placeholder por &lt;img src="tu-imagen.jpg"&gt;</div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="proyectos">
+  <div class="section-inner fade-in">
+    <h2 class="section-title" contenteditable="true">Mis Servicios &amp; Tarifas</h2>
+    <div class="section-divider"></div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-top"><span class="svc-icon">🎬</span><span class="svc-name" contenteditable="true">Edición de Reel o TikTok</span></div>
+        <p class="svc-desc" contenteditable="true">Edición de 1 video corto optimizado para redes sociales con música, texto y efectos.</p>
+        <span class="svc-price" contenteditable="true">S/ 80 – 120 por video</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-top"><span class="svc-icon">🎥</span><span class="svc-name" contenteditable="true">Video Promocional</span></div>
+        <p class="svc-desc" contenteditable="true">Video de hasta 2 minutos para eventos, cursos o campañas digitales. Edición completa incluida.</p>
+        <span class="svc-price" contenteditable="true">S/ 150 – 250 por video</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-top"><span class="svc-icon">🎨</span><span class="svc-name" contenteditable="true">Diseño Gráfico para Redes</span></div>
+        <p class="svc-desc" contenteditable="true">Piezas visuales para Instagram, Facebook o TikTok. Pack de 4 piezas disponible.</p>
+        <span class="svc-price" contenteditable="true">S/ 50 – 80 · Pack x4: S/ 150</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-top"><span class="svc-icon">📱</span><span class="svc-name" contenteditable="true">Gestión de Redes Sociales</span></div>
+        <p class="svc-desc" contenteditable="true">Planificación de contenido, calendario editorial y monitoreo de comunidad. Por 1 red social.</p>
+        <span class="svc-price" contenteditable="true">S/ 300 – 450 / mes</span>
+      </div>
+      <div class="service-card full">
+        <div class="svc-top"><span class="svc-icon">📊</span><span class="svc-name" contenteditable="true">Campañas Digitales – Meta Ads</span></div>
+        <p class="svc-desc" contenteditable="true">Configuración, segmentación de públicos, seguimiento y reporte de campañas en Facebook e Instagram.</p>
+        <span class="svc-price" contenteditable="true">S/ 200 – 350 por campaña</span>
+      </div>
+    </div>
+    <div class="contract-banner">
+      <div class="icon">📄</div>
+      <div>
+        <div class="contract-title" contenteditable="true">Todos los servicios incluyen contrato de trabajo</div>
+        <div class="contract-desc" contenteditable="true">Trabajo con contrato formal en cada proyecto para garantizar transparencia, compromiso y protección para ambas partes. Se requiere un adelanto del 50% para iniciar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner fade-in" style="text-align:center;">
+    <h2 class="section-title" contenteditable="true">Contacto</h2>
+    <div class="section-divider" style="margin:8px auto 24px;"></div>
+    <p class="contact-tagline" contenteditable="true">¿Tienes un proyecto en mente? Hablemos.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <div class="contact-label">Teléfono</div>
+        <div class="contact-value" contenteditable="true">+51 960 933 725</div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">✉️</div>
+        <div class="contact-label">Correo</div>
+        <div class="contact-value" contenteditable="true">claudiaximenasalazarherrera@gmail.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div class="contact-label">Ubicación</div>
+        <div class="contact-value" contenteditable="true">Lima, Perú</div>
+      </div>
+    </div>
+    <a class="cta-btn" href="mailto:claudiaximenasalazarherrera@gmail.com">Envíame un mensaje</a>
+  </div>
+</section>
+
+<footer>
+  <p contenteditable="true">© 2026 Claudia Ximena Salazar Herrera · Todos los derechos reservados</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  let cur = '';
+  document.querySelectorAll('section[id]').forEach(s => { if(window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+cur));
+});
+
+function toggleMenu(){
+  const m = document.getElementById('mobileMenu'), h = document.getElementById('hamburger');
+  m.classList.toggle('open'); h.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
